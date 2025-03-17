@@ -1,4 +1,5 @@
 require('dotenv').config();
+let bodyParser = require('body-parser');
 let express = require('express');
 let app = express();
 console.log("Hello World");
@@ -24,6 +25,7 @@ app.get("/now", function(req, res, next) {
 }, function(req, res) {
   res.json({time: req.time});
 });
+app.use(bodyParser.urlencoded({extended: false}));
 app.get("/:word/echo", function(req, res) {
   res.json({echo: req.params.word});
 })
