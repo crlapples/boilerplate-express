@@ -1,5 +1,4 @@
-require('dotenv').config()
-
+require('dotenv').config();
 let express = require('express');
 let app = express();
 console.log("Hello World");
@@ -15,12 +14,10 @@ app.get("/json", function(req, res) {
     res.json({ "message": "Hello json" })
   }
 });
-
-
-
-
-
-
+app.use(function(req, res, next) {
+  console.log(req.method + " " + req.path + " - " + req.ip);
+  next();
+});
 
 
 
